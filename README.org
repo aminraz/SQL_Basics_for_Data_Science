@@ -1,0 +1,54 @@
+* WEEK #1
+** keywords
+- data modeling
+- NoSQL
+- primary keys, foreign keys
+- ER diagrams: Chen notation, Crow's foot notation, UML class diagram notation
+** installation
+- for Linux: install sqlite3 from terminal
+** commands
+*** select
+  simple select query
+  #+begin_src sql
+	    select col1, col2, col3 from my_table limit number_of_lines;
+  #+end_src
+  limit the number of rows
+  #+begin_src sql
+	    select col1, col2, col3 from my_table where col4 = 'value';
+  #+end_src
+  sum of a column
+  #+begin_src sql
+	    select sum(col1) from my_table;
+  #+end_src
+*** create table
+  #+begin_src sql
+    create table my_table
+	   (col1 char(20) null,
+	   col2 char(20) not null,
+	   col3 char(20) primary key);
+  #+end_src
+*** insert into table
+  #+begin_src sql
+	    /* It's a good practice to first
+	    identify columns that the values
+	     are going to get there */
+    insert into my_table
+	   (col1, col2, )
+	   values
+	   (value1, value2,);		
+  #+end_src
+*** create temporary table
+  #+begin_src sql
+	    -- create a subset from a table
+    create temporary table my_tmp_table as
+	   (
+	   select *
+	   from my_table
+	   where col1 = 'value')
+  #+end_src
+*** adding comments by -- and /**/
+*** open a database
+#+begin_src sql
+	  .open database_name.db
+#+end_src
+

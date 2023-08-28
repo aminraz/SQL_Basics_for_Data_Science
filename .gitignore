@@ -1,0 +1,24 @@
+# Emacs Org Mode specific files
+# Ignore backup files
+*~
+
+# Ignore autosave files
+.#*
+
+# Ignore Org Mode export files
+*.pdf
+*.html
+*.tex
+*.odt
+
+# Ignore Emacs session files
+*.elc
+*.session
+
+# Ignore auto-save and backup folders
+/.auto-save-list/
+/backup/
+/auto-save-list/
+
+# Ignore .emacs.desktop files (Emacs session)
+.desktop
