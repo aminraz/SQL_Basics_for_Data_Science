@@ -62,25 +62,25 @@
 * WEEK #2: Filtering sorting and calculating data with SQL
 ** Introduction
 *** Clauses and operators
-- where
-- between
-- in
-- or
-- not
-- like
-- order by
-- group by
+- WHERE
+- BETWEEN
+- IN
+- OR
+- NOT
+- LIKE
+- ORDER BY
+- GROUP BY
 *** Wildcards
 *** Math operators
-- average
-- count
-- max
-- min
+- AVERAGE
+- COUNT
+- MAX
+- MIN
 ** Basics of Filtering with SQL
 *** where clause operator
 #+begin_src sql
-  select col1, col2 from my_table
-	 where col operator value;
+  SELECT col1, col2 FROM my_table
+	 WHERE col operator value;
 #+end_src
 operator can be
 - =
@@ -92,10 +92,10 @@ operator can be
 - BETWEEN AND
 - IS NULL
 ** Advanced Filtering: IN, OR, and NOT
-*** in
+*** IN
 - use parentheses for more than one condition with comma between them
-*** or
-| where | X     | or | Y     | condition |
+*** OR
+| WHERE | X     | or | Y     | condition |
 |-------+-------+----+-------+-----------|
 |       | true  | or | false | X         |
 |       | true  | or | true  | X         |
@@ -107,12 +107,12 @@ operator can be
 - in: order is not important
 - in: making sub-queries
 *** OR  AND
-| where | X | OR | Y | AND | Z | condition |
+| WHERE | X | OR | Y | AND | Z | condition |
 |-------+---+----+---+-----+---+-----------|
 |       | T |    | F |     | F | X         |
 OR is executed before AND. By using parentheses we can force to check
 AND condition:
-| where | (X | OR | Y) | AND | Z | condition |
+| WHERE | (X | OR | Y) | AND | Z | condition |
 |-------+----+----+----+-----+---+-----------|
 |       | T  |    | F  |     | F | nil       |
 ** Using Wildcards in SQL
@@ -122,7 +122,7 @@ Used for only string data not numerical data.
   it does not match NULL value
 - _: is not supported in DB2 but most other system support it.
   #+begin_src sql
-	    where val like '_string'
+	    WHERE val LIKE '_string'
   #+end_src
 - []: not supported in SQLite
 - Wildcards are slower than filtering operators 
@@ -131,7 +131,7 @@ Used for only string data not numerical data.
 - Different columns can be used for sorting
 - Column position can be used
   #+begin_src sql
-    order by 1,5
+    ORDER BY 1,5
   #+end_src
 - DESC: descending
 - ASC: ascending
@@ -140,8 +140,8 @@ Used for only string data not numerical data.
 Creating new column in the output from math operations on other
 columns:
 #+begin_src sql
-  select col1,col2, col1*col2 AS new_col
-	 from my_table;
+  SELECT col1,col2, col1*col2 AS new_col
+	 FROM my_table;
 #+end_src
 new_col is as alias for the new column 
 ** Aggregate Functions
@@ -151,17 +151,17 @@ new_col is as alias for the new column
 - MAX()
 - SUM()
 #+begin_src sql
-  select AVG(col1) as col1_avg from my_table;
+  SELECT AVG(col1) AS col1_avg FROM my_table;
 	 -- null rows are ignored 
 #+end_src
 #+begin_src sql
-  select count(*) as total_rows from my_table;
+  SELECT count(*) AS total_rows FROM my_table;
 	 -- it counts null rows
 	 -- if you count a specific column, it ignores null rows
 #+end_src
 *** DISTINCT
 It recognizes duplicates in a column
 #+begin_src sql
-  select count(distinct col1)
-	 from my_table
+  SELECT count(DISTINCT col1)
+	 FROM my_table
 #+end_src
