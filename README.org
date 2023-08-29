@@ -51,4 +51,115 @@
 #+begin_src sql
 	  .open database_name.db
 #+end_src
-
+** articles
+- [[https://aws.amazon.com/what-is/sql/][AWS and SQL]]
+- [[https://www.w3resource.com/sqlite/index.php][Sqlite toturials]]
+- [[https://dataconomy.com/2014/07/01/sql-vs-nosql-need-know/][SQL vs. NoSQL – Know the Difference]]
+- [[https://www.techrepublic.com/article/nosql-keeps-rising-but-relational-databases-still-dominate-big-data/][NoSQL keeps rising, but relational databases still dominate big data]]
+- 
+* WEEK #2: Filtering sorting and calculating data with SQL
+** Introduction
+*** Clauses and operators
+- where
+- between
+- in
+- or
+- not
+- like
+- order by
+- group by
+*** Wildcards
+*** Math operators
+- average
+- count
+- max
+- min
+** Basics of Filtering with SQL
+*** where clause operator
+#+begin_src sql
+  select col1, col2 from my_table
+	 where col operator value;
+#+end_src
+operator can be
+- =
+- <> (not equal !=)
+- <
+- >
+- >=
+- <=
+- BETWEEN AND
+- IS NULL
+** Advanced Filtering: IN, OR, and NOT
+*** in
+- use parentheses for more than one condition with comma between them
+*** or
+| where | X     | or | Y     | condition |
+|-------+-------+----+-------+-----------|
+|       | true  | or | false | X         |
+|       | true  | or | true  | X         |
+|       | false | or | false | nil       |
+|       | false | or | true  | Y         |
+*** IN or OR
+- in is faster
+- or: order is important
+- in: order is not important
+- in: making sub-queries
+*** OR  AND
+| where | X | OR | Y | AND | Z | condition |
+|-------+---+----+---+-----+---+-----------|
+|       | T |    | F |     | F | X         |
+OR is executed before AND. By using parentheses we can force to check
+AND condition:
+| where | (X | OR | Y) | AND | Z | condition |
+|-------+----+----+----+-----+---+-----------|
+|       | T  |    | F  |     | F | nil       |
+** Using Wildcards in SQL
+*** LIKE operator(predicate)
+Used for only string data not numerical data. 
+- %: '%string', 'st%g', 'st%'
+  it does not match NULL value
+- _: is not supported in DB2 but most other system support it.
+  #+begin_src sql
+	    where val like '_string'
+  #+end_src
+- []: not supported in SQLite
+- Wildcards are slower than filtering operators 
+** ORDER BY
+- It should be the last clause in an statement
+- Different columns can be used for sorting
+- Column position can be used
+  #+begin_src sql
+    order by 1,5
+  #+end_src
+- DESC: descending
+- ASC: ascending
+- DESC and ASC should be repeated for each column
+** Math Operations
+Creating new column in the output from math operations on other
+columns:
+#+begin_src sql
+  select col1,col2, col1*col2 AS new_col
+	 from my_table;
+#+end_src
+new_col is as alias for the new column 
+** Aggregate Functions
+- AVG()
+- COUNT()
+- MIN()
+- MAX()
+- SUM()
+#+begin_src sql
+  select AVG(col1) as col1_avg from my_table;
+	 -- null rows are ignored 
+#+end_src
+#+begin_src sql
+  select count(*) as total_rows from my_table;
+	 -- it counts null rows
+	 -- if you count a specific column, it ignores null rows
+#+end_src
+*** DISTINCT
+It recognizes duplicates in a column
+#+begin_src sql
+  select count(distinct col1)
+	 from my_table
+#+end_src
