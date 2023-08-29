@@ -1,3 +1,5 @@
+#+STARTUP: overview
+
 * WEEK #1
 ** keywords
 - data modeling
