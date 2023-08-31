@@ -49,10 +49,6 @@
 	   where col1 = 'value')
   #+end_src
 *** adding comments by -- and /**/
-*** open a database
-#+begin_src sql
-	  .open database_name.db
-#+end_src
 ** articles
 - [[https://aws.amazon.com/what-is/sql/][AWS and SQL]]
 - [[https://www.w3resource.com/sqlite/index.php][Sqlite toturials]]
@@ -63,7 +59,7 @@
 ** Introduction
 *** Clauses and operators
 - WHERE
-- BETWEEN
+- BETWEEN AND
 - IN
 - OR
 - NOT
@@ -91,30 +87,37 @@ operator can be
 - <=
 - BETWEEN AND
 - IS NULL
+*** BETWEEN AND
+#+begin_src sql
+  select city from customers where customerid between 4 and 10;	
+#+end_src
 ** Advanced Filtering: IN, OR, and NOT
 *** IN
 - use parentheses for more than one condition with comma between them
+  #+begin_src sql
+    select country from customers where city in ('Paris', 'Rome', 'Oslo');		
+  #+end_src
 *** OR
-| WHERE | X     | or | Y     | condition |
-|-------+-------+----+-------+-----------|
-|       | true  | or | false | X         |
-|       | true  | or | true  | X         |
-|       | false | or | false | nil       |
-|       | false | or | true  | Y         |
+| WHERE | X     | or | Y     | output |
+|-------+-------+----+-------+--------|
+|       | true  | or | false | X      |
+|       | true  | or | true  | X      |
+|       | false | or | false | nil    |
+|       | false | or | true  | Y      |
 *** IN or OR
-- in is faster
-- or: order is important
-- in: order is not important
-- in: making sub-queries
+- IN is faster
+- OR: order is important
+- IN: order is not important
+- IN: making sub-queries
 *** OR  AND
-| WHERE | X | OR | Y | AND | Z | condition |
-|-------+---+----+---+-----+---+-----------|
-|       | T |    | F |     | F | X         |
+| WHERE | X | OR | Y | AND | Z | output |
+|-------+---+----+---+-----+---+--------|
+|       | T |    | F |     | F | X      |
 OR is executed before AND. By using parentheses we can force to check
 AND condition:
-| WHERE | (X | OR | Y) | AND | Z | condition |
-|-------+----+----+----+-----+---+-----------|
-|       | T  |    | F  |     | F | nil       |
+| WHERE | (X | OR | Y) | AND | Z | output |
+|-------+----+----+----+-----+---+--------|
+|       | T  |    | F  |     | F | nil    |
 ** Using Wildcards in SQL
 *** LIKE operator(predicate)
 Used for only string data not numerical data. 
@@ -159,9 +162,62 @@ new_col is as alias for the new column
 	 -- it counts null rows
 	 -- if you count a specific column, it ignores null rows
 #+end_src
+AS is not mandatory.
+
 *** DISTINCT
 It recognizes duplicates in a column
 #+begin_src sql
   SELECT count(DISTINCT col1)
 	 FROM my_table
 #+end_src
+** Grouping Data with SQL
+*** GROUP BY
+  In the following example we are counting the number of cities each
+  country has in our table customers:
+  #+begin_src sql
+    select country, count(city) from customers group by country ;	
+  #+end_src
+*** HAVING
+  It filters the result of group by like where. In the following
+  example, the result is filtered to those countries with customers
+  having a special email patter: 
+  #+begin_src sql
+    select country, count(city) from customers group by country having  email like '%com';	
+  #+end_src
+  We can use multiple columns for group by. If there are more columns
+  in the group by, these groups need to be in the select part
+  too. NULL is categorized separately.
+
+  WHERE is used before grouping and HAVING is used after it. 
+* Sample Database
+Download the sample database called chinook from this [[https://www.sqlitetutorial.net/sqlite-sample-database/][link]].
+** see columns in a sample table
+#+begin_src sql
+	  select * from genres; 
+#+end_src
+* GENERAL COMMANDS
+- open the database
+  #+begin_src sql
+	  .open chinook.db
+#+end_src
+- inspect the tables
+  #+begin_src sql
+	  .tables
+#+end_src
+- .help: show help for dot commands
+- .database: show the connected databases in the session
+- attach a database
+  #+begin_src sql
+	    attach database "address.db" as db_name;
+  #+end_src
+- .exit: exit the sqlite
+- showing the structure of a table
+  #+begin_src sql
+	    .schema tab_name
+  #+end_src
+- .indexes: show the indexes of the current database or table
+- write query result into a file
+  #+begin_src sql
+    .output filename
+	    select * from tab_name;
+  #+end_src
