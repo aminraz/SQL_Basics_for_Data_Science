@@ -1,41 +1,23 @@
 
 # Table of Contents
 
-1.  [WEEK #1](#org2644863)
-    1.  [keywords](#org7e61123)
-    2.  [installation](#org4daf85f)
-    3.  [commands](#org9894645)
-        1.  [select](#org489ab3b)
-        2.  [create table](#org81db404)
-        3.  [insert into table](#orgbcc3706)
-        4.  [create temporary table](#orgdbfbb68)
-        5.  [adding comments by &#x2013; and *\*\**](#orgd290b67)
-    4.  [articles](#orgb635bdd)
-2.  [WEEK #2](#org5b87e73)
-    1.  [Introduction](#orge3c85aa)
-        1.  [Clauses and operators](#orgb5f9953)
-        2.  [Wildcards](#orgc2e83c0)
-        3.  [Math operators](#org7873520)
-    2.  [Basics of Filtering with SQL](#org97a8343)
-        1.  [where clause operator](#org12b919e)
-        2.  [BETWEEN AND](#org874b8d1)
-    3.  [Advanced Filtering: IN, OR, and NOT](#orgb5517ec)
-        1.  [IN](#orgf4488ef)
-        2.  [OR](#org59865b7)
-        3.  [IN or OR](#orga400383)
-        4.  [OR  AND](#orgc0157d3)
-    4.  [Using Wildcards in SQL](#org9545250)
-        1.  [LIKE operator(predicate)](#org7e8e323)
-    5.  [ORDER BY](#org332adc7)
-    6.  [Math Operations](#org983a3b7)
-    7.  [Aggregate Functions](#org749b08c)
-        1.  [DISTINCT](#orgf0e19fb)
-    8.  [Grouping Data with SQL](#org49700bb)
-        1.  [GROUP BY](#orgc174399)
-        2.  [HAVING](#orgf331523)
-3.  [Sample Database](#orgb2dab07)
-    1.  [see columns in a sample table](#org022f6c7)
-4.  [GENERAL COMMANDS](#org62cd1f8)
+1.  [WEEK #1](#org8c36237)
+    1.  [keywords](#org24d69ba)
+    2.  [installation](#orgb741df2)
+    3.  [commands](#orgdc2e514)
+    4.  [articles](#org96ca956)
+2.  [WEEK #2](#org686d6a2)
+    1.  [Introduction](#org6dc424d)
+    2.  [Basics of Filtering with SQL](#org4672fc5)
+    3.  [Advanced Filtering: IN, OR, and NOT](#org6620a36)
+    4.  [Using Wildcards in SQL](#orgb7d44c2)
+    5.  [ORDER BY](#orgedad785)
+    6.  [Math Operations](#orgeb698c5)
+    7.  [Aggregate Functions](#orge0a8cd8)
+    8.  [Grouping Data with SQL](#orge80e814)
+3.  [Sample Database](#org2912447)
+    1.  [see columns in a sample table](#org9fbb669)
+4.  [GENERAL COMMANDS](#org6863ced)
 
 This file includes notes and summary of the course [SQL for Data
 Science](https://www.coursera.org/learn/sql-for-data-science) from University of California, Davis available in Coursera
@@ -48,12 +30,12 @@ You are encouraged to download the README.org and open it inside Emacs
 if you're familiar with org mode. It has the same content.
 
 
-<a id="org2644863"></a>
+<a id="org8c36237"></a>
 
 # WEEK #1
 
 
-<a id="org7e61123"></a>
+<a id="org24d69ba"></a>
 
 ## keywords
 
@@ -63,19 +45,17 @@ if you're familiar with org mode. It has the same content.
 -   ER diagrams: Chen notation, Crow's foot notation, UML class diagram notation
 
 
-<a id="org4daf85f"></a>
+<a id="orgb741df2"></a>
 
 ## installation
 
 -   for Linux: install sqlite3 from terminal
 
 
-<a id="org9894645"></a>
+<a id="orgdc2e514"></a>
 
 ## commands
 
-
-<a id="org489ab3b"></a>
 
 ### select
 
@@ -92,8 +72,6 @@ sum of a column
     select sum(col1) from my_table;
 
 
-<a id="org81db404"></a>
-
 ### create table
 
     create table my_table
@@ -101,8 +79,6 @@ sum of a column
            col2 char(20) not null,
            col3 char(20) primary key);
 
-
-<a id="orgbcc3706"></a>
 
 ### insert into table
 
@@ -115,8 +91,6 @@ sum of a column
            (value1, value2,);		
 
 
-<a id="orgdbfbb68"></a>
-
 ### create temporary table
 
     	-- create a subset from a table
@@ -127,12 +101,10 @@ sum of a column
            where col1 = 'value')
 
 
-<a id="orgd290b67"></a>
-
 ### adding comments by &#x2013; and *\*\**
 
 
-<a id="orgb635bdd"></a>
+<a id="org96ca956"></a>
 
 ## articles
 
@@ -143,19 +115,17 @@ sum of a column
 -   
 
 
-<a id="org5b87e73"></a>
+<a id="org686d6a2"></a>
 
 # WEEK #2
 
 Filtering sorting and calculating data with SQL
 
 
-<a id="orge3c85aa"></a>
+<a id="org6dc424d"></a>
 
 ## Introduction
 
-
-<a id="orgb5f9953"></a>
 
 ### Clauses and operators
 
@@ -169,12 +139,8 @@ Filtering sorting and calculating data with SQL
 -   GROUP BY
 
 
-<a id="orgc2e83c0"></a>
-
 ### Wildcards
 
-
-<a id="org7873520"></a>
 
 ### Math operators
 
@@ -184,12 +150,10 @@ Filtering sorting and calculating data with SQL
 -   MIN
 
 
-<a id="org97a8343"></a>
+<a id="org4672fc5"></a>
 
 ## Basics of Filtering with SQL
 
-
-<a id="org12b919e"></a>
 
 ### where clause operator
 
@@ -208,19 +172,15 @@ operator can be
 -   IS NULL
 
 
-<a id="org874b8d1"></a>
-
 ### BETWEEN AND
 
     select city from customers where customerid between 4 and 10;	
 
 
-<a id="orgb5517ec"></a>
+<a id="org6620a36"></a>
 
 ## Advanced Filtering: IN, OR, and NOT
 
-
-<a id="orgf4488ef"></a>
 
 ### IN
 
@@ -228,8 +188,6 @@ operator can be
     
         select country from customers where city in ('Paris', 'Rome', 'Oslo');
 
-
-<a id="org59865b7"></a>
 
 ### OR
 
@@ -296,8 +254,6 @@ operator can be
 </table>
 
 
-<a id="orga400383"></a>
-
 ### IN or OR
 
 -   IN is faster
@@ -305,8 +261,6 @@ operator can be
 -   IN: order is not important
 -   IN: making sub-queries
 
-
-<a id="orgc0157d3"></a>
 
 ### OR  AND
 
@@ -400,12 +354,10 @@ AND condition:
 </table>
 
 
-<a id="org9545250"></a>
+<a id="orgb7d44c2"></a>
 
 ## Using Wildcards in SQL
 
-
-<a id="org7e8e323"></a>
 
 ### LIKE operator(predicate)
 
@@ -420,7 +372,7 @@ Used for only string data not numerical data.
 -   Wildcards are slower than filtering operators
 
 
-<a id="org332adc7"></a>
+<a id="orgedad785"></a>
 
 ## ORDER BY
 
@@ -434,7 +386,7 @@ Used for only string data not numerical data.
 -   DESC and ASC should be repeated for each column
 
 
-<a id="org983a3b7"></a>
+<a id="orgeb698c5"></a>
 
 ## Math Operations
 
@@ -447,7 +399,7 @@ columns:
 new<sub>col</sub> is as alias for the new column 
 
 
-<a id="org749b08c"></a>
+<a id="orge0a8cd8"></a>
 
 ## Aggregate Functions
 
@@ -467,8 +419,6 @@ new<sub>col</sub> is as alias for the new column
 AS is not mandatory.
 
 
-<a id="orgf0e19fb"></a>
-
 ### DISTINCT
 
 It recognizes duplicates in a column
@@ -477,12 +427,10 @@ It recognizes duplicates in a column
            FROM my_table
 
 
-<a id="org49700bb"></a>
+<a id="orge80e814"></a>
 
 ## Grouping Data with SQL
 
-
-<a id="orgc174399"></a>
 
 ### GROUP BY
 
@@ -491,8 +439,6 @@ country has in our table customers:
 
     select country, count(city) from customers group by country ;	
 
-
-<a id="orgf331523"></a>
 
 ### HAVING
 
@@ -509,21 +455,21 @@ too. NULL is categorized separately.
 WHERE is used before grouping and HAVING is used after it. 
 
 
-<a id="orgb2dab07"></a>
+<a id="org2912447"></a>
 
 # Sample Database
 
 Download the sample database called chinook from this [link](https://www.sqlitetutorial.net/sqlite-sample-database/).
 
 
-<a id="org022f6c7"></a>
+<a id="org9fbb669"></a>
 
 ## see columns in a sample table
 
     select * from genres; 
 
 
-<a id="org62cd1f8"></a>
+<a id="org6863ced"></a>
 
 # GENERAL COMMANDS
 

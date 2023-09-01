@@ -1,4 +1,6 @@
 #+STARTUP: overview
+#+OPTIONS: toc:2
+ 
 This file includes notes and summary of the course [[https://www.coursera.org/learn/sql-for-data-science][SQL for Data
 Science]] from University of California, Davis available in Coursera
 as well as additional information that I find useful to learn but it's
