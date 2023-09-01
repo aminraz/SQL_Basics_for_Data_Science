@@ -1,4 +1,13 @@
 #+STARTUP: overview
+This org file includes notes and summary of the course [[https://www.coursera.org/learn/sql-for-data-science][SQL for Data
+Science]] from University of California, Davis available in Coursera
+as well as additional information that I find useful to learn but it's
+missing in the course. You can use it as a supplementary material if
+you're taking the course or as an standalone summary of basics of SQL
+for data science.
+
+This document is divided into different headings that you jump into
+through these links: [[*WEEK #1]] [[*WEEK #2]]
 
 * WEEK #1
 ** keywords
@@ -55,7 +64,8 @@
 - [[https://dataconomy.com/2014/07/01/sql-vs-nosql-need-know/][SQL vs. NoSQL – Know the Difference]]
 - [[https://www.techrepublic.com/article/nosql-keeps-rising-but-relational-databases-still-dominate-big-data/][NoSQL keeps rising, but relational databases still dominate big data]]
 - 
-* WEEK #2: Filtering sorting and calculating data with SQL
+* WEEK #2
+Filtering sorting and calculating data with SQL
 ** Introduction
 *** Clauses and operators
 - WHERE
