@@ -11,6 +11,38 @@ for data science.
 You are encouraged to download the README.org and open it inside Emacs
 if you're familiar with org mode. It has the same content.
 
+* Sample Database
+Download the sample database called chinook from this [[https://www.sqlitetutorial.net/sqlite-sample-database/][link]].
+** see columns in a sample table
+#+begin_src sql
+	  select * from genres; 
+#+end_src
+* General Commands
+- open the database
+  #+begin_src sql
+	  .open chinook.db
+#+end_src
+- inspect the tables
+  #+begin_src sql
+	  .tables
+#+end_src
+- .help: show help for dot commands
+- .database: show the connected databases in the session
+- attach a database
+  #+begin_src sql
+	    attach database "address.db" as db_name;
+  #+end_src
+- .exit: exit the sqlite
+- showing the structure of a table
+  #+begin_src sql
+	    .schema tab_name
+  #+end_src
+- .indexes: show the indexes of the current database or table
+- write query result into a file
+  #+begin_src sql
+    .output filename
+	    select * from tab_name;
+  #+end_src
 * WEEK #1
 ** keywords
 - data modeling
@@ -201,35 +233,74 @@ It recognizes duplicates in a column
   too. NULL is categorized separately.
 
   WHERE is used before grouping and HAVING is used after it. 
-* Sample Database
-Download the sample database called chinook from this [[https://www.sqlitetutorial.net/sqlite-sample-database/][link]].
-** see columns in a sample table
+* WEEK #3
+** Using Subqueries
+They are used to create queries inside queries.
 #+begin_src sql
-	  select * from genres; 
+	      select country, company from customers
+	      where customerid in
+	      (select customerid from invoices where billingstate like 'a%');
 #+end_src
-* GENERAL COMMANDS
-- open the database
-  #+begin_src sql
-	  .open chinook.db
+** Subquery Best Practices and Considerations
+Format your code using [[https://poorsql.com/][poorsql.com]]
+** Joins
+*** selecting from different tables
+#+begin_src sql
+SELECT orders.order_id, customers.customer_name
+FROM orders
+INNER JOIN customers ON orders.customer_id = customers.customer_id;
+
 #+end_src
-- inspect the tables
-  #+begin_src sql
-	  .tables
+The dot (.) in orders.order_id and customers.customer_name is used to
+specify the table from which each column should be retrieved. This
+notation is often referred to as "table.column" notation, and it's
+necessary when you are selecting columns from multiple tables that
+have columns with the same name.
+*** inner join
+#+begin_src sql
+SELECT orders.order_id, customers.customer_name
+FROM orders
+INNER JOIN customers ON orders.customer_id = customers.customer_id;
+
 #+end_src
-- .help: show help for dot commands
-- .database: show the connected databases in the session
-- attach a database
-  #+begin_src sql
-	    attach database "address.db" as db_name;
-  #+end_src
-- .exit: exit the sqlite
-- showing the structure of a table
-  #+begin_src sql
-	    .schema tab_name
-  #+end_src
-- .indexes: show the indexes of the current database or table
-- write query result into a file
-  #+begin_src sql
-    .output filename
-	    select * from tab_name;
-  #+end_src
+
+1. `SELECT orders.order_id, customers.customer_name`: This part of the SQL statement specifies the columns you want to retrieve in the result set. It's saying that you want to retrieve two columns:
+   - `orders.order_id`: This is the `order_id` column from the `orders` table.
+   - `customers.customer_name`: This is the `customer_name` column from the `customers` table.
+
+2. `FROM orders`: This part of the statement specifies the source table from which you want to retrieve data. In this case, it's the `orders` table.
+
+3. `INNER JOIN customers ON orders.customer_id = customers.customer_id`: This is where the actual join operation occurs. Let's break it down further:
+   - `INNER JOIN`: This specifies that you want to perform an inner join between the `orders` table and the `customers` table. An inner join returns only the rows where there is a match in both tables.
+   - `customers` is the name of the table you're joining with.
+   - `ON orders.customer_id = customers.customer_id`: This part of the statement specifies the join condition. It tells the database how to match rows between the two tables. Specifically, it's saying that you want to join rows where the `customer_id` column in the `orders` table is equal to the `customer_id` column in the `customers` table. This condition establishes the relationship between the two tables based on the `customer_id` column.
+
+So, when you execute this SQL statement, SQLite will retrieve data from both the `orders` and `customers` tables and combine it into a single result set. The result will include pairs of `order_id` and `customer_name` where the `customer_id` values in the `orders` and `customers` tables match.
+
+For example, if you have the following data:
+
+*orders table:*
+| order_id | customer_id |
+|----------+-------------|
+|        1 |         101 |
+|        2 |         102 |
+|        3 |         103 |
+
+*customers table:*
+| customer_id | customer_name |
+|-------------+---------------|
+|         101 | Alice         |
+|         102 | Bob           |
+|         104 | Carol         |
+
+The result of the SQL query will be:
+
+| order_id | customer_name |
+|----------+---------------|
+|        1 | Alice         |
+|        2 | Bob           |
+
+As you can see, only the rows with matching `customer_id` values (1
+and 2) are included in the result, and it combines the relevant data
+from both tables.
+
