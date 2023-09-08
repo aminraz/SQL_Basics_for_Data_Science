@@ -22,3 +22,5 @@
 
 # Ignore .emacs.desktop files (Emacs session)
 .desktop
+
+*.db
