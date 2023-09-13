@@ -13,11 +13,8 @@ if you're familiar with org mode. It has the same content.
 
 * Sample Database
 Download the sample database called chinook from this [[https://www.sqlitetutorial.net/sqlite-sample-database/][link]].
-** see columns in a sample table
-#+begin_src sql
-	  select * from genres; 
-#+end_src
 * General Commands
+Some general commands you can use to inspect your sample database:
 - open the database
   #+begin_src sql
 	  .open chinook.db
@@ -99,7 +96,7 @@ Download the sample database called chinook from this [[https://www.sqlitetutori
 - [[https://www.techrepublic.com/article/nosql-keeps-rising-but-relational-databases-still-dominate-big-data/][NoSQL keeps rising, but relational databases still dominate big data]]
 - 
 * WEEK #2
-Filtering sorting and calculating data with SQL
+Filtering, sorting, and calculating data with SQL
 ** Introduction
 *** Clauses and operators
 - WHERE
@@ -735,7 +732,7 @@ SELECT strftime('%I:%M %p', '2023-09-06 15:30:00');
 #+end_src
 ```
 *** Now
-To retrieve date of now
+To retrieve the current date:
 #+begin_src sql
 	  select date('now');
 #+end_src

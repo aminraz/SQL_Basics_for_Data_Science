@@ -1,35 +1,34 @@
 
 # Table of Contents
 
-1.  [Sample Database](#orgbe82d14)
-    1.  [see columns in a sample table](#orga725e8e)
-2.  [General Commands](#orgfb5c396)
-3.  [WEEK #1](#org6d545ba)
-    1.  [keywords](#orgcdb682b)
-    2.  [installation](#orgc5d3b37)
-    3.  [commands](#orgea4c7ba)
-    4.  [articles](#org75c7f97)
-4.  [WEEK #2](#orgb2a94e5)
-    1.  [Introduction](#orgf5aa359)
-    2.  [Basics of Filtering with SQL](#org8c604af)
-    3.  [Advanced Filtering: IN, OR, and NOT](#org4b121b0)
-    4.  [Using Wildcards in SQL](#org98b7dbf)
-    5.  [ORDER BY](#org00ed653)
-    6.  [Math Operations](#org2be58a7)
-    7.  [Aggregate Functions](#orga08507f)
-    8.  [Grouping Data with SQL](#org74b91a5)
-5.  [WEEK #3](#orga9e60a4)
-    1.  [Using Subqueries](#org4fe0617)
-    2.  [Subquery Best Practices and Considerations](#org73f8b5c)
-    3.  [Joins](#org0d87162)
-    4.  [JOIN vs Subquery](#org8217df8)
-6.  [WEEK #4](#org47e4fc8)
-    1.  [Working with Text Strings](#orgfc517d9)
-    2.  [Date and Time Strings](#orgad99c3a)
-    3.  [Case Statements](#org857af8f)
-    4.  [Create View](#orgc9a0ead)
-    5.  [Data Governance and Profiling](#orgc052cab)
-    6.  [links](#orgc70c4ae)
+1.  [Sample Database](#org1e19c7d)
+2.  [General Commands](#orgdab65e3)
+3.  [WEEK #1](#org6fb0fac)
+    1.  [keywords](#orgdc31245)
+    2.  [installation](#org885e8e1)
+    3.  [commands](#org0559671)
+    4.  [articles](#org2b54f9a)
+4.  [WEEK #2](#org41e5ec0)
+    1.  [Introduction](#orgfc56c28)
+    2.  [Basics of Filtering with SQL](#orgef09101)
+    3.  [Advanced Filtering: IN, OR, and NOT](#org2d482fb)
+    4.  [Using Wildcards in SQL](#orgea02d14)
+    5.  [ORDER BY](#org7c7d107)
+    6.  [Math Operations](#org1f09c93)
+    7.  [Aggregate Functions](#org270bd79)
+    8.  [Grouping Data with SQL](#org693b44a)
+5.  [WEEK #3](#org3b25922)
+    1.  [Using Subqueries](#org32da0c5)
+    2.  [Subquery Best Practices and Considerations](#org0f8a994)
+    3.  [Joins](#orga2a0e84)
+    4.  [JOIN vs Subquery](#orgd4c578f)
+6.  [WEEK #4](#orgf7a4981)
+    1.  [Working with Text Strings](#org06b89f5)
+    2.  [Date and Time Strings](#org9c0db81)
+    3.  [Case Statements](#orgcddc9e0)
+    4.  [Create View](#orge04b208)
+    5.  [Data Governance and Profiling](#orgc771516)
+    6.  [links](#orgee94fa6)
 
 This file includes notes and summary of the course [SQL for Data
 Science](https://www.coursera.org/learn/sql-for-data-science) from University of California, Davis available in Coursera
@@ -42,23 +41,18 @@ You are encouraged to download the README.org and open it inside Emacs
 if you're familiar with org mode. It has the same content.
 
 
-<a id="orgbe82d14"></a>
+<a id="org1e19c7d"></a>
 
 # Sample Database
 
 Download the sample database called chinook from this [link](https://www.sqlitetutorial.net/sqlite-sample-database/).
 
 
-<a id="orga725e8e"></a>
-
-## see columns in a sample table
-
-    select * from genres; 
-
-
-<a id="orgfb5c396"></a>
+<a id="orgdab65e3"></a>
 
 # General Commands
+
+Some general commands you can use to inspect your sample database:
 
 -   open the database
     
@@ -82,12 +76,12 @@ Download the sample database called chinook from this [link](https://www.sqlitet
         	select * from tab_name;
 
 
-<a id="org6d545ba"></a>
+<a id="org6fb0fac"></a>
 
 # WEEK #1
 
 
-<a id="orgcdb682b"></a>
+<a id="orgdc31245"></a>
 
 ## keywords
 
@@ -97,14 +91,14 @@ Download the sample database called chinook from this [link](https://www.sqlitet
 -   ER diagrams: Chen notation, Crow's foot notation, UML class diagram notation
 
 
-<a id="orgc5d3b37"></a>
+<a id="org885e8e1"></a>
 
 ## installation
 
 -   for Linux: install sqlite3 from terminal
 
 
-<a id="orgea4c7ba"></a>
+<a id="org0559671"></a>
 
 ## commands
 
@@ -156,7 +150,7 @@ sum of a column
 ### adding comments by &#x2013; and *\*\**
 
 
-<a id="org75c7f97"></a>
+<a id="org2b54f9a"></a>
 
 ## articles
 
@@ -167,14 +161,14 @@ sum of a column
 -   
 
 
-<a id="orgb2a94e5"></a>
+<a id="org41e5ec0"></a>
 
 # WEEK #2
 
-Filtering sorting and calculating data with SQL
+Filtering, sorting, and calculating data with SQL
 
 
-<a id="orgf5aa359"></a>
+<a id="orgfc56c28"></a>
 
 ## Introduction
 
@@ -202,7 +196,7 @@ Filtering sorting and calculating data with SQL
 -   MIN
 
 
-<a id="org8c604af"></a>
+<a id="orgef09101"></a>
 
 ## Basics of Filtering with SQL
 
@@ -229,7 +223,7 @@ operator can be
     select city from customers where customerid between 4 and 10;	
 
 
-<a id="org4b121b0"></a>
+<a id="org2d482fb"></a>
 
 ## Advanced Filtering: IN, OR, and NOT
 
@@ -406,7 +400,7 @@ AND condition:
 </table>
 
 
-<a id="org98b7dbf"></a>
+<a id="orgea02d14"></a>
 
 ## Using Wildcards in SQL
 
@@ -424,7 +418,7 @@ Used for only string data not numerical data.
 -   Wildcards are slower than filtering operators
 
 
-<a id="org00ed653"></a>
+<a id="org7c7d107"></a>
 
 ## ORDER BY
 
@@ -438,7 +432,7 @@ Used for only string data not numerical data.
 -   DESC and ASC should be repeated for each column
 
 
-<a id="org2be58a7"></a>
+<a id="org1f09c93"></a>
 
 ## Math Operations
 
@@ -451,7 +445,7 @@ columns:
 new<sub>col</sub> is as alias for the new column 
 
 
-<a id="orga08507f"></a>
+<a id="org270bd79"></a>
 
 ## Aggregate Functions
 
@@ -479,7 +473,7 @@ It recognizes duplicates in a column
            FROM my_table
 
 
-<a id="org74b91a5"></a>
+<a id="org693b44a"></a>
 
 ## Grouping Data with SQL
 
@@ -507,12 +501,12 @@ too. NULL is categorized separately.
 WHERE is used before grouping and HAVING is used after it. 
 
 
-<a id="orga9e60a4"></a>
+<a id="org3b25922"></a>
 
 # WEEK #3
 
 
-<a id="org4fe0617"></a>
+<a id="org32da0c5"></a>
 
 ## Using Subqueries
 
@@ -523,14 +517,14 @@ They are used to create queries inside queries.
     (select customerid from invoices where billingstate like 'a%');
 
 
-<a id="org73f8b5c"></a>
+<a id="org0f8a994"></a>
 
 ## Subquery Best Practices and Considerations
 
 Format your code using [poorsql.com](https://poorsql.com/)
 
 
-<a id="org0d87162"></a>
+<a id="orga2a0e84"></a>
 
 ## Joins
 
@@ -1365,7 +1359,7 @@ duplicate rows in the result.
     FROM table2;
 
 
-<a id="org8217df8"></a>
+<a id="orgd4c578f"></a>
 
 ## JOIN vs Subquery
 
@@ -1374,12 +1368,12 @@ subquery, the table that is called inside the subquery is not
 accessible outside the subquery. 
 
 
-<a id="org47e4fc8"></a>
+<a id="orgf7a4981"></a>
 
 # WEEK #4
 
 
-<a id="orgfc517d9"></a>
+<a id="org06b89f5"></a>
 
 ## Working with Text Strings
 
@@ -1406,7 +1400,7 @@ trim. num1 starts with 1.
         select ucase(col1) from tab1;
 
 
-<a id="orgad99c3a"></a>
+<a id="org9c0db81"></a>
 
 ## Date and Time Strings
 
@@ -1477,12 +1471,12 @@ Examples of using the \`strftime\` function with modifiers and format codes:
 
 ### Now
 
-To retrieve date of now
+To retrieve the current date:
 
     select date('now');
 
 
-<a id="org857af8f"></a>
+<a id="orgcddc9e0"></a>
 
 ## Case Statements
 
@@ -1515,7 +1509,7 @@ In this example, we use a CASE statement to categorize people as
 either 'Adult' or 'Minor' based on their age.
 
 
-<a id="orgc9a0ead"></a>
+<a id="orge04b208"></a>
 
 ## Create View
 
@@ -1555,7 +1549,7 @@ analysis, reporting, or other purposes. Each phase of the ETL process
 serves a specific purpose.
 
 
-<a id="orgc052cab"></a>
+<a id="orgc771516"></a>
 
 ## Data Governance and Profiling
 
@@ -1582,7 +1576,7 @@ profiling in SQL:
     distributions.
 
 
-<a id="orgc70c4ae"></a>
+<a id="orgee94fa6"></a>
 
 ## links
 
